@@ -80,8 +80,8 @@ public class DownloadService extends Service {
                 URL fileUrl = new URL(url);
                 con = (HttpURLConnection) fileUrl.openConnection();
                 con.setRequestMethod("GET");
-                con.setReadTimeout(5000);
-                con.setConnectTimeout(5000);
+                con.setReadTimeout(50000);
+                con.setConnectTimeout(50000);
                 con.connect();
                 int responseCode = con.getResponseCode();
 

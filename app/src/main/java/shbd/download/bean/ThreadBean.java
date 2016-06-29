@@ -14,12 +14,12 @@ public class ThreadBean implements Serializable {
     //结束位置
     private int end;
     //是否完成下载，标志位
-    private int finished;
+    private long finished;
 
     public ThreadBean() {
     }
 
-    public ThreadBean(int id, String url, int start, int end, int finished) {
+    public ThreadBean(int id, String url, int start, int end, long finished) {
         this.id = id;
         this.url = url;
         this.start = start;
@@ -59,7 +59,7 @@ public class ThreadBean implements Serializable {
         this.end = end;
     }
 
-    public int getFinished() {
+    public long getFinished() {
         return finished;
     }
 

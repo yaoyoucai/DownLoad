@@ -20,7 +20,7 @@
         android:max="100"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:progress="30"
+        android:progress="100"
         app:progress_reach_color="#da4343"
         app:progress_text_color="#fa2b2b"
         app:progress_text_offset="3dp"

@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onReceive(Context context, Intent intent) {
             if (DownloadService.ACTION_UPDATE.equals(intent.getAction())) {
-                mPbProgress.setProgress(intent.getIntExtra("finished", 0));
+                mPbProgress.setProgress((int) intent.getLongExtra("finished", 0));
             }
         }
     };

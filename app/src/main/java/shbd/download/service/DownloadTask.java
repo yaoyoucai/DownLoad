@@ -2,7 +2,6 @@ package shbd.download.service;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,7 +28,7 @@ public class DownloadTask {
     private ThreadBean mThreadBean;
 
     //当前下载进度
-    private int mFinished;
+    private long mFinished;
 
     //是否暂停下载
     public boolean isPause = false;
@@ -82,7 +81,7 @@ public class DownloadTask {
                 long time = System.currentTimeMillis();
 
                 //设置文件开始下载的位置
-                int start = mThreadBean.getStart() + mThreadBean.getFinished();
+                int start = (int) (mThreadBean.getStart() + mThreadBean.getFinished());
                 con.setRequestProperty("Range", "bytes=" + start + "-" + mThreadBean.getEnd());
 
                 //设置文件写入的位置
@@ -106,13 +105,14 @@ public class DownloadTask {
                             time = System.currentTimeMillis();
 
                         }*/
-                        Log.e("tag", "mFinished: "+mFinished+"fileLength:"+mFileBean.getLength());
-                        intent.putExtra("finished", mFinished * 100 / mFileBean.getLength());
+                      /*  intent.putExtra("finished", mFinished * 100 / mFileBean.getLength());
+                        Log.e("tag", "precent: "+ mFinished * 100 / mFileBean.getLength());
+                        Log.e("tag", "mFinished: "+mFinished+"fileLength:"+mFileBean.getLength());*/
                         mContext.sendBroadcast(intent);
 
                         if (isPause) {
                             //暂停下载，保存进度
-                            mDownLoadImpl.updateThread(mThreadBean.getUrl(), mThreadBean.getId(), mFinished);
+                            mDownLoadImpl.updateThread(mThreadBean.getUrl(), mThreadBean.getId(), (int) mFinished);
                             return;
                         }
                     }
